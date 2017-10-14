@@ -3,9 +3,14 @@ public class Lesson1_Task4 {
 
         int n = 454;
 
-        int q = (n/10)/10 + (n/10)%10 + n%10;
+        int[] array = Additional_Helping.getArrayOfNumeralsOfNumber(n);
 
-        System.out.println("Сумма цифр трехзначного числа n: " + q);
+        int sum = 0;
+
+        for (int i = 0; i < array.length; i++)
+            sum = sum + array[i];
+
+        System.out.println("Сумма цифр трехзначного числа n: " + sum);
 
     }
 }
