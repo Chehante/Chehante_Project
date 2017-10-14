@@ -1,13 +1,6 @@
-public class Additional_Helping {
+class Additional_Helping {
 
-    public static void main(String[] args){
-        int[] array = getArrayOfNumeralsOfNumber(435);
-        for (int i = 0; i < array.length; i++){
-            System.out.println(array[i]);
-        }
-    }
-
-    public static int[] getArrayOfNumeralsOfNumber(int number){
+    static int[] getArrayOfNumeralsOfNumber(int number){
 
         int numberlength = Integer.toString(number).length();
 
