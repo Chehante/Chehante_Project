@@ -7,7 +7,7 @@ public class Lesson2_Task5_random_numbers {
         // Инициализируем генератор
         Random rndm = new Random();
         // Получаем случайное число в диапазоне от 0 до 999 (включительно)
-        int number = rndm.nextInt(1000);
+        int number = 100 + rndm.nextInt(900);
 
         System.out.println(number);
 
