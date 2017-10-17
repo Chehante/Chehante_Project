@@ -1,6 +1,6 @@
-import java.util.Collections;
+package Lesson2;
+
 import java.util.Random;
-import java.util.Arrays;
 
 public class Lesson2_Task5_random_numbers {
     public static void main(String[] args){

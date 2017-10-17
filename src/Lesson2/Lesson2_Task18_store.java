@@ -1,3 +1,5 @@
+package Lesson2;
+
 public class Lesson2_Task18_store {
     public static void main(String[] args){
         int amount = 0;

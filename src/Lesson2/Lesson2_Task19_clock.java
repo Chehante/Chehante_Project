@@ -1,3 +1,5 @@
+package Lesson2;
+
 public class Lesson2_Task19_clock {
     public static void main(String[] args){
 

@@ -1,6 +1,8 @@
-class Additional_Helping {
+package Lesson2;
 
-    static int[] getArrayOfNumeralsOfNumber(int number){
+public class Additional_Helping {
+
+   public static int[] getArrayOfNumeralsOfNumber(int number){
 
         int numberlength = Integer.toString(number).length();
 

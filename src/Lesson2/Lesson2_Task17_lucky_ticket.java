@@ -1,4 +1,4 @@
-import java.util.Scanner;
+package Lesson2;
 
 public class Lesson2_Task17_lucky_ticket {
     public static void main(String[] args){

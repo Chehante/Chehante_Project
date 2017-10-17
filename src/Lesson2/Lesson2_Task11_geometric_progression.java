@@ -1,3 +1,5 @@
+package Lesson2;
+
 public class Lesson2_Task11_geometric_progression {
     public static void main(String[] args){
         for (int i = 1; i<=20; i++ )

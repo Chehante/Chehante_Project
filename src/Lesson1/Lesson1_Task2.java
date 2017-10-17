@@ -1,3 +1,7 @@
+package Lesson1;
+
+import Lesson2.Additional_Helping;
+
 public class Lesson1_Task2 {
     public static void main(String[] args) {
 

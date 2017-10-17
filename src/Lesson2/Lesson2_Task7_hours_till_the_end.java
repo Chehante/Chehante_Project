@@ -1,3 +1,5 @@
+package Lesson2;
+
 import java.util.Random;
 
 public class Lesson2_Task7_hours_till_the_end {
