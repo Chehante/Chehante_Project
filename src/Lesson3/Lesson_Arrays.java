@@ -7,7 +7,7 @@ import static Lesson3.extra.scripting;
 import static Lesson3.extra.bubblesoring;
 import static Lesson3.extra.sumOfIntArray;
 
-public class Lesson {
+public class Lesson_Arrays {
 
     public static void main(String[] args){
 
