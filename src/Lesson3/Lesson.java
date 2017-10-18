@@ -30,7 +30,19 @@ public class Lesson {
         //arraysTask5();
 
         /////Arrays_Task6_increasing_array/////
-        arraysTask6();
+        //arraysTask6();
+
+        /////Arrays_Task7_fibonachi_array/////
+        //arraysTask7();
+
+        /////Arrays_Task8_max_of_last/////
+        //arraysTask8();
+
+        /////Arrays_Task9_3_arrays/////
+        //arraysTask9();
+
+        /////Arrays_Task10_1_0/////
+        arraysTask10();
 
     }
 
@@ -136,4 +148,78 @@ public class Lesson {
             System.out.println("Массив не строго возрастающий");
 
     }
+
+    /////Arrays_Task7_fibonachi_array/////
+    public static void arraysTask7(){
+        int[] array = new int[20];
+        array[0] = 1;
+        array[1] = 1;
+        for (int i = 2; i<20; i++)
+            array[i] = array[i-2] + array[i-1];
+        System.out.println(Arrays.toString(array));
+    }
+
+    /////Arrays_Task8_max_of_last/////
+    public static void arraysTask8(){
+        int[] array = new int[12];
+        Random rndm = new Random();
+        int indexmax = 0;
+        for (int i = 0; i < array.length; i++) {
+            array[i] = -15 + rndm.nextInt(31);
+            if (array[i] >= array[indexmax])
+                indexmax = i;
+        }
+        System.out.println(Arrays.toString(array));
+        System.out.println("Индекс последнего максимального элемента массива: " + indexmax);
+
+    }
+
+    /////Arrays_Task9_3_arrays/////
+    public static void arraysTask9(){
+        int[] array1 = new int[10];
+        int[] array2 = new int[10];
+        double[] arrayfinal = new double[10];
+        Random rndm = new Random();
+        int quantityOfInt = 0;
+        for (int i = 0; i < 10; i++) {
+            array1[i] = 1 + rndm.nextInt(9);
+            array2[i] = 1 + rndm.nextInt(9);
+            arrayfinal[i] = (double)array1[i]/array2[i];
+            if (arrayfinal[i]%1 == 0)
+                quantityOfInt += 1;
+        }
+        System.out.println(Arrays.toString(array1));
+        System.out.println(Arrays.toString(array2));
+        System.out.println(Arrays.toString(arrayfinal));
+        System.out.println("Количество целых в последнем массиве: " + quantityOfInt);
+
+    }
+
+    /////Arrays_Task10_1_0/////
+    public static void arraysTask10() {
+        int[] array = new int[11];
+        Random rndm = new Random();
+        int count0 = 0;
+        int count1 = 0;
+        int countminus1 = 0;
+        for (int i = 0; i < 11; i++) {
+            array[i] = -1 + rndm.nextInt(3);
+            switch (array[i]) {
+                case 1:
+                    count1++;
+                    break;
+                case -1:
+                    countminus1++;
+                    break;
+            }
+            count0 = array.length - count1 - countminus1;
+        }
+        System.out.println(Arrays.toString(array));
+        int max = Integer.max(Integer.max(count1, countminus1), count0);
+        if (!(count0 == count1 || count0 == countminus1 || count1 == countminus1))
+            System.out.println(max);
+
+    }
+
+
 }
