@@ -1,62 +1,115 @@
 package Lesson4;
 
 import java.util.Random;
+import java.util.Scanner;
 
 public class IntList {
 
-    Item head;
+    private Item head;
 
     public static void main(String[] args) {
-        Item head = new Item(0);
-        IntList basicList = new IntList(head);
+
+        int maxIndex;
+
+        Scanner scnr = new Scanner(System.in);
         Random rndm = new Random();
+
+        IntList basicList = new IntList();
         for (int i = 0; i < 5; i++) {
             basicList.add(1 + rndm.nextInt(9));
         }
-        basicList.printArray();
-        System.out.println("The value of index 3 is " + basicList.get(3).number);
-        System.out.println("Are deleting index 3");
-        int deleted = basicList.remove(3);
-        System.out.println("Deleted number: " + deleted);
-        basicList.printArray();
-    }
+        maxIndex = basicList.getIndexFromItem(basicList.getLastItem());
+        if (maxIndex < 0) {
+            System.out.println("В зависимом списке нет ни одного элемента. Дальнейшие действия будут прерваны.");
+            return;
+        }
 
-    private IntList(Item firstItem) {
-        head = firstItem;
+        basicList.printArray();
+
+        System.out.println("Введите индекс числа списка (не больше " + maxIndex + "), которое хотите получить:");
+        int getexample = scnr.nextInt();
+        System.out.println("Значение номера: " + basicList.getItemFromIndex(getexample).number);
+
+        System.out.println("Введите индекс числа списка (не больше " + maxIndex + "), которое удаляем:");
+        int deleteexample = scnr.nextInt();
+        int deleted = basicList.remove(deleteexample);
+        System.out.println("Удален элемент с номером (не индексом): " + deleted);
+
+        basicList.printArray();
     }
 
     private void add(int i) {
         Item item = new Item(i);
-        getLastItem().nextItem = item;
+        int finalIndex = 0;
+        if (head == null)
+            head = item;
+        else
+            finalIndex = getIndexFromItem(getLastItem());
+            for (int k = 0; k <= finalIndex; k++) {
+                Item kItem = getItemFromIndex(k);
+                if (i < kItem.number){
+                    item.nextItem = kItem;
+                    if (k == 0)
+                        head = item;
+                    else
+                        getItemFromIndex(k - 1).nextItem = item;
+                }
+                else if (i > kItem.number && k == getIndexFromItem(getLastItem()))
+                getItemFromIndex(k - 1).nextItem = item;
+            }
+
     }
 
-    private Item get(int index) {
-        Item wantedItem = head;
-        for (int i = 0; i <= index; i++)
-            wantedItem = wantedItem.nextItem;
-        return wantedItem;
+    private int get(int index) {
+        return getItemFromIndex(index).number;
     }
 
     private int remove(int index) {
-        Item previous = index == 0 ? head : get(index - 1);
-        previous.nextItem = get(index).nextItem;
-        return get(index).number;
+        if (index == 0)
+            head = getItemFromIndex(index + 1);
+        else {
+            Item previous = getItemFromIndex(index - 1);
+            previous.nextItem = getItemFromIndex(index).nextItem;
+        }
+        return get(index);
 
     }
+///////////////////////////extra metods///////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////
 
     private Item getLastItem() {
         Item lastItem = head;
+        if (lastItem == null)
+            return null;
         while (lastItem.nextItem != null)
             lastItem = lastItem.nextItem;
         return lastItem;
     }
 
     private void printArray() {
-        Item lastItem = head;
-        while (lastItem.nextItem != null) {
-            lastItem = lastItem.nextItem;
-            System.out.println(lastItem.number);
+        //int finalIndex = basicList.getIndexFromItem(basicList.getLastItem());
+        for (int i = 0; i < 5; i++)
+            System.out.print(getItemFromIndex(i).number + " ");
+    }
+
+    private Item getItemFromIndex(int index){
+        Item wantedItem = head;
+        for (int i = 0; i < index; i++) {
+                wantedItem = wantedItem.nextItem;
         }
+        return wantedItem;
+    }
+
+    private int getIndexFromItem(Item item){
+        if (item == null)
+            return -1;
+        Item nextItem = head;
+        int index = 0;
+        while (nextItem != item) {
+            index += 1;
+            nextItem = nextItem.nextItem;
+        }
+        return index;
     }
 
 }
