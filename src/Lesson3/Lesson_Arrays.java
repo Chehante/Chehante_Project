@@ -42,7 +42,19 @@ public class Lesson_Arrays {
         //arraysTask9();
 
         /////Arrays_Task10_1_0/////
-        arraysTask10();
+        //arraysTask10();
+
+        /////Arrays_Task10_1_0/////
+        //arraysTask10();
+
+        /////Arrays_Task11_right_left/////
+        //arraysTask11();
+
+        /////Arrays_Task12_equal_quantity_positive_negative/////
+        //arraysTask12();
+
+        /////Arrays_Task13_positive_array/////
+        arraysTask13();
 
     }
 
@@ -221,5 +233,99 @@ public class Lesson_Arrays {
 
     }
 
+    /////Arrays_Task11_right_left/////
+    public static void arraysTask11() {
 
+        Scanner scr = new Scanner(System.in);
+        Random rndm = new Random();
+        int sumLeft = 0;
+        int sumRight = 0;
+        int n;
+
+        do {
+            System.out.print("Введите четное число, обозначающее размер одномерного массива: ");
+            n = scr.nextInt();
+        }
+        while (n % 2 != 0);
+
+        int[] array = new int[n];
+        for (int i = 0; i < n; i++){
+            array[i] = -5 + rndm.nextInt(11);
+            if (i < n/2)
+                sumLeft += Math.abs(array[i]);
+            else
+                sumRight += Math.abs(array[i]);
+        }
+        String operand;
+        if (sumLeft < sumRight)
+            operand = "меньше";
+        else if (sumLeft > sumRight)
+            operand = "больше";
+        else
+            operand = "равна";
+
+
+
+        System.out.println(Arrays.toString(array));
+        System.out.println("Сумма левой половины массива (" + sumLeft + ") " + operand + " правой половины массива (" + sumRight + ")");
+
+    }
+
+    /////Arrays_Task12_equal_quantity_positive_negative/////
+    public static void arraysTask12() {
+
+        Random rndm = new Random();
+        int quantityPositive = 0;
+        int quantityNegative = 0;
+
+        int[] array = new int[12];
+
+        for (int i = 0; i < array.length; i++) {
+            do {array[i] = -10 + rndm.nextInt(21);}
+            while (array[i] == 0 || quantityPositive == 6 && array[i] > 0 || quantityNegative == 6 && array[i] < 0);
+            if (array[i] < 0)
+                quantityNegative += 1;
+            else
+                quantityPositive += 1;
+
+        }
+        System.out.println(Arrays.toString(array));
+    }
+
+    /////Arrays_Task13_positive_array/////
+    public static void arraysTask13(){
+        Scanner scr = new Scanner(System.in);
+        Random rndm = new Random();
+        int sumEven = 0;
+        int n;
+
+        do {
+            System.out.print("Введите число больше 3, обозначающее размер одномерного массива: ");
+            n = scr.nextInt();
+        }
+        while (n <= 3);
+
+        int[] array = new int[n];
+        for (int i = 0; i < array.length; i++){
+            array[i] = rndm.nextInt(n);
+            if (array[i]%2 == 0 && array[i] != 0)
+            sumEven += 1;
+        }
+
+        System.out.println(Arrays.toString(array));
+
+        if (sumEven > 0){
+            int[] arrayEven = new int[sumEven];
+            int k = 0;
+            for (int i = 0; i < array.length; i++){
+                if (array[i] % 2 == 0 && array[i] != 0) {
+                    arrayEven[k] = array[i];
+                    k++;
+                }
+            }
+            System.out.println(Arrays.toString(arrayEven));
+        }
+
+
+    }
 }

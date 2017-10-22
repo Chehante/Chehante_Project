@@ -94,17 +94,17 @@ public class LessonMultidimensionalArrays {
     public static void multidimensionalarraysTask5(){
         Random rndm = new Random();
         Integer[][] multiarray = new Integer[2][15];
-        String cheking = "";
+        StringBuilder strbldr = new StringBuilder();
         for (int i = 0; i < 15; i++) {
             int a = 0;
             int b = 0;
-            while ((a == 0 && b == 0) && (cheking.indexOf(a + "*" + b) != -1 || cheking.indexOf(b + "*" + a) != -1)){
-                a = rndm.nextInt(9);
-                b = rndm.nextInt(9);
+            while ((a == 0 && b == 0) || (strbldr.indexOf(a + "*" + b) != -1 || strbldr.indexOf(b + "*" + a) != -1)){
+                a = 2 + rndm.nextInt(8);
+                b = 2 + rndm.nextInt(8);
             }
             multiarray[0][i] = a;
             multiarray[1][i] = b;
-            cheking = cheking + a + "*" + b;
+            strbldr.append(a + "*" + b);
             }
 
         for (int i = 0; i < 2; i++) {
