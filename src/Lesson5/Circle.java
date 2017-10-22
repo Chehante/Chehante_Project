@@ -5,7 +5,7 @@ public class Circle extends Shape {
     int rad;
 
     public Circle(Point a, int b){
-        centr = a;
+        //centr = a;
         rad = b;
     }
 

@@ -4,11 +4,11 @@ public class Shape {
 
     Point a;
 
-    public double getSquare(){
-
-    }
-
-    public double getPerimeter(){
-
-    }
+//    public double getSquare(){
+//
+//    }
+//
+//    public double getPerimeter(){
+//
+//    }
 }
