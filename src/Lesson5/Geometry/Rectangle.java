@@ -25,7 +25,4 @@ public class Rectangle extends Shape{
         return 2*(ab+bc);
     }
 
-    public int Test(){
-        return 2;
-    }
 }
