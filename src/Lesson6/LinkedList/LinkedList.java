@@ -1,17 +1,21 @@
-package Lesson5.LinkedList;
+package Lesson6.LinkedList;
 
 import Lesson4.LibraryBooks.Book;
 import Lesson4.LibraryBooks.Library;
 import Lesson5.Geometry.Point;
+import Lesson5.Geometry.Rectangle;
+import Lesson6.List;
+import Lesson6.Queue;
+import Lesson6.Stack;
 
-import java.util.Random;
+import java.awt.*;
 
-public class IntList {
+public class LinkedList implements List , Queue,  Stack{
 
     Item lastItem;
     Item head;
 
-    private void add(Object object) {
+    public void add(Object object) {
 
         Item newItem = new Item(object);
 
@@ -26,7 +30,7 @@ public class IntList {
 
     }
 
-    private Object get(int index){
+    public Object get(int index){
         Item foundItem = head;
         for (int i = 0; i < index; i++){
             foundItem = foundItem.nextItem;
@@ -34,7 +38,7 @@ public class IntList {
         return foundItem.object;
     }
 
-    private Object remove(int index) {
+    public Object remove(int index) {
 
         if (index == 0) {
             if (head != null) {
@@ -69,7 +73,7 @@ public class IntList {
     }
 
     public static void main(String[] args){
-        IntList intl = new IntList();
+        LinkedList intl = new LinkedList();
 
         Object rctngl = new Point(4,5);
         intl.add(rctngl);
@@ -80,24 +84,55 @@ public class IntList {
         Object lbr = new Library();
         intl.add(lbr);
 
-        intl.printIntList();
+        intl.printLinkedList();
 
         System.out.println("Удалили индекс 0, номер: " + intl.remove(0));
 
-        intl.printIntList();
+        intl.printLinkedList();
 
         System.out.println("Удалили индекс 1, номер: " + intl.remove(1));
 
-        intl.printIntList();
+        intl.printLinkedList();
 
     }
 
+    public int size(){
+        if (head == null)
+            return 0;
+        else {
+            int size = 1;
+            Item currentItem = head;
+            while (currentItem.nextItem != null)
+                currentItem = currentItem.nextItem;
+                size++;
+            return size;
+        }
+    }
+
+    //from the beginning
+    public Object poll(){
+        Item currentItem = head;
+        head = head.nextItem;
+        return currentItem.object;
+    }
+
+    //to the beginning
+    public void push(Object object){
+        Item itm = new Item(object);
+        itm.nextItem = head;
+        head = itm;
+    }
+
+    //from the beginning
+    public Object pop(){
+        return poll();
+    }
 
 ///////////////////////////extra metods///////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
 
 
-    private void printIntList(){
+    private void printLinkedList(){
         Item nextItem = head;
         while (nextItem != null) {
             System.out.print(nextItem.object.toString() + " ");

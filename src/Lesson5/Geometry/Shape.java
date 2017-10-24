@@ -1,6 +1,6 @@
 package Lesson5.Geometry;
 
-public class Shape {
+public abstract class Shape {
 
     Point a;
 
