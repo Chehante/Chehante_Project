@@ -11,7 +11,6 @@ public class ArrayList implements List, Queue, Stack {
 
     public static int arrayCapacity = 10;
     private Object[] arrayObjects;
-    private int previousLength = 10;
 
     @Override
     public void add(Object object) {
@@ -23,7 +22,6 @@ public class ArrayList implements List, Queue, Stack {
 
             }
             arrayObjectsNew[arrSize] = object;
-            previousLength = arrayObjects.length;
             arrayObjects = arrayObjectsNew;
         }
         else{
@@ -38,19 +36,9 @@ public class ArrayList implements List, Queue, Stack {
 
     @Override
     public Object remove(int index) {
-        int arraySize = size();
-        Object[] arrayObjectsNew;
-        if (arraySize - 1 == previousLength) {
-            arrayObjectsNew = new Object[previousLength];
-        }
-        else
-            //если размерность не меняется, то можно не создавать второй массив, зато код однотипный. спросить.
-            arrayObjectsNew = new Object[arrayObjects.length];
-
-        for (int i = 0; i < arraySize; i++) {
-            int r = i < index ? i : i + 1;
-            arrayObjectsNew[r] = arrayObjects[i];
-        }
+        Object[] arrayObjectsNew = new Object[arrayObjects.length];
+        System.arraycopy(arrayObjects, 0, arrayObjectsNew, 0 , index);
+        System.arraycopy(arrayObjects, index + 1, arrayObjectsNew, index , arrayObjects.length - index - 1);
         Object t = arrayObjects[index];
         arrayObjects = arrayObjectsNew;
         return t;
@@ -64,7 +52,34 @@ public class ArrayList implements List, Queue, Stack {
 
     public static void main(String[] args){
         ArrayList arrList = new ArrayList(new Object[arrayCapacity]);
-        arrList.arrayObjects[0] = new Integer(6);
+        arrList.add(new Integer(6));
+        arrList.add(new Integer(2));
+        arrList.add(new Integer(3));
+
+        System.out.println(Arrays.toString(arrList.arrayObjects));
+
+        System.out.println(arrList.get(2));
+
+        arrList.remove(2);
+
+        System.out.println(Arrays.toString(arrList.arrayObjects));
+
+        System.out.println("Текущий размер массива: " + arrList.size());
+
+        arrList.push(new Integer(8));
+        arrList.push(new Integer(9));
+
+        System.out.println(Arrays.toString(arrList.arrayObjects));
+
+        arrList.pop();
+
+        System.out.println(Arrays.toString(arrList.arrayObjects));
+
+        arrList.poll();
+
+        System.out.println(Arrays.toString(arrList.arrayObjects));
+
+
     }
 
     @Override
@@ -98,7 +113,6 @@ public class ArrayList implements List, Queue, Stack {
         for (int i = 0; i < arrSize; i++) {
             arrayObjectsNew[i + 1] = arrayObjects[i];
         }
-        previousLength = arrayObjects.length;
         arrayObjects = arrayObjectsNew;
     }
 

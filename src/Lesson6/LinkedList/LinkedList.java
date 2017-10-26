@@ -1,9 +1,5 @@
 package Lesson6.LinkedList;
 
-import Lesson4.LibraryBooks.Book;
-import Lesson4.LibraryBooks.Library;
-import Lesson5.Geometry.Point;
-import Lesson5.Geometry.Rectangle;
 import Lesson6.List;
 import Lesson6.Queue;
 import Lesson6.Stack;
@@ -75,24 +71,30 @@ public class LinkedList implements List , Queue,  Stack{
     public static void main(String[] args){
         LinkedList intl = new LinkedList();
 
-        Object rctngl = new Point(4,5);
-        intl.add(rctngl);
-
-        Object book = new Book("author", "title", 10);
-        intl.add(book);
-
-        Object lbr = new Library();
-        intl.add(lbr);
-
-        intl.printLinkedList();
-
-        System.out.println("Удалили индекс 0, номер: " + intl.remove(0));
+        intl.add(new Integer(3));
+        intl.add(new Integer(4));
+        intl.add(new Integer(8));
+        intl.add(new Integer(1));
 
         intl.printLinkedList();
 
         System.out.println("Удалили индекс 1, номер: " + intl.remove(1));
 
         intl.printLinkedList();
+
+        System.out.println("Индекс 1 теперь: " + intl.get(1));
+
+        intl.push(new Integer(2));
+
+        intl.printLinkedList();
+
+        intl.pop();
+
+        intl.poll();
+
+        intl.printLinkedList();
+
+        System.out.println("Размер массива: " + intl.size());
 
     }
 
