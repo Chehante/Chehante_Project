@@ -2,7 +2,6 @@ package Lesson8;
 
 import Lesson7.Iterator.ArrayList.ArrayList;
 import Lesson7.Iterator.LinkedList.LinkedList;
-import Lesson7.Iterator.List;
 import Lesson7.Utils.Utils;
 
 import java.util.Arrays;
