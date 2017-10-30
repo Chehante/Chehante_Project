@@ -11,7 +11,7 @@ import java.util.Random;
 public class ArrayList implements List, Queue, Stack {
 
     public static int arrayCapacity = 10;
-    private Object[] arrayObjects;
+    public Object[] arrayObjects;
 
     @Override
     public void add(Object object) {
@@ -116,6 +116,13 @@ public class ArrayList implements List, Queue, Stack {
         return new IteratorInner(0);
     }
 
+    @Override
+    public List clone() {
+        ArrayList arrList = new ArrayList(new Object[arrayObjects.length]);
+        arrList.arrayObjects = arrayObjects;
+        return arrList;
+    }
+
     //внутренний класс
     public class IteratorInner implements Iterator{
 
@@ -126,8 +133,7 @@ public class ArrayList implements List, Queue, Stack {
         }
 
         @Override
-        public boolean hasNext() {
-            return !(arrayObjects[currentIndex] == null);
+        public boolean hasNext() {return currentIndex < arrayObjects.length && !(arrayObjects[currentIndex] == null);
         }
 
         @Override
@@ -140,6 +146,7 @@ public class ArrayList implements List, Queue, Stack {
 //////////////////////////////////////////////////////////////////////////////
 
 
-    private void printLinkedList() {
+    private void printList() {
+
     }
 }

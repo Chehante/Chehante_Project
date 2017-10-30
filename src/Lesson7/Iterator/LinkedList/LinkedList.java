@@ -81,7 +81,7 @@ public class LinkedList implements List, Queue, Stack {
         intl.add(new Integer(6));
         intl.add(new Integer(6));
 
-        intl.printLinkedList();
+        intl.printList();
 
         Iterator itr = intl.iterator();
         //пробегаем с помощью итератора по ArrayList
@@ -154,11 +154,17 @@ public class LinkedList implements List, Queue, Stack {
         }
     }
 
+    @Override
+    public List clone() {
+        LinkedList lnkdList = new LinkedList();
+        lnkdList.head = head;
+        return lnkdList;
+    }
 ///////////////////////////extra metods///////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
 
 
-    private void printLinkedList(){
+    public void printList(){
         Item nextItem = head;
         while (nextItem != null) {
             System.out.print(nextItem.object.toString() + " ");
