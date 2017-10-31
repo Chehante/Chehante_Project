@@ -107,6 +107,8 @@ public class LinkedList implements List, Queue, Stack {
 
     //from the beginning
     public Object poll(){
+        if (head == null)
+            return null;
         Item currentItem = head;
         head = head.nextItem;
         return currentItem.object;
