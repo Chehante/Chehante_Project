@@ -9,8 +9,8 @@ import java.util.Iterator;
 
 public class LinkedList implements List, Queue, Stack {
 
-    Item lastItem;
-    Item head;
+    public Item lastItem;
+    public Item head;
 
     public void add(Object object) {
 
