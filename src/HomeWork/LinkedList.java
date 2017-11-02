@@ -31,11 +31,11 @@ public class LinkedList <T> implements List<T>, Queue<T>, Stack<T> {
         return foundItem.object;
     }
 
-    public T remove(int index) {
+    public Object remove(int index) {
 
         if (index == 0) {
             if (head != null) {
-            T ob = (T)head.object;
+            Object ob = head.object;
             head = head.nextItem;
             return ob;}
             else
@@ -66,19 +66,23 @@ public class LinkedList <T> implements List<T>, Queue<T>, Stack<T> {
     }
 
     public static void main(String[] args){
-        List <String> intl = new LinkedList<>();
+        List <String> intl1 = new LinkedList<>();
+        List <String> intl2 = new LinkedList<>();
 
-        intl.add("Опа");
-        intl.add("гагнам");
-        intl.add("стайл");
+        intl1.add("Опа");
+        intl1.add("гагнам");
+        intl1.add("стайл");
 
-        Iterator itr = intl.iterator();
-        //пробегаем с помощью итератора по ArrayList
-        while (itr.hasNext()) {
-            Object o = itr.next();
-            System.out.print(o + " ");
-        }
+        intl2.add("Опа");
+        intl2.add("гагнам");
+        intl2.add("стайл");
 
+        System.out.println(intl1.hashCode());
+        System.out.println(intl2.hashCode());
+
+        System.out.println("Hashcodes are " + (intl1.hashCode() == intl2.hashCode()? "equal" : "not equal"));
+
+        System.out.println("Lists are " + (intl1.equals(intl2) ? "equal" : "not equal"));
     }
 
     public int size(){
@@ -131,10 +135,7 @@ public class LinkedList <T> implements List<T>, Queue<T>, Stack<T> {
 
         @Override
         public boolean hasNext() {
-            if (currentItem == null)
-                return false;
-            else
-                return true;
+            return !(currentItem == null);
         }
 
         @Override
@@ -151,7 +152,36 @@ public class LinkedList <T> implements List<T>, Queue<T>, Stack<T> {
         lnkdList.head = head;
         return lnkdList;
     }
-///////////////////////////extra metods///////////////////////////////////////
+
+    @Override
+    public int hashCode() {
+
+        int currentIndex = 1;
+        int currentHash = 0;
+        for(Object o: this){
+            currentHash += currentIndex++ * o.hashCode();
+        }
+        return currentHash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+
+        int index = 0;
+
+        if (obj.getClass() != this.getClass())
+            return false;
+
+        LinkedList secondList = (LinkedList)obj;
+
+        for(Object o: this){
+            if (!(o == secondList.get(index++)))
+                return false;
+        }
+        return true;
+    }
+
+    ///////////////////////////extra metods///////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
 
 
