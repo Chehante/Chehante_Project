@@ -19,7 +19,7 @@ public class Generics {
 
     public static void main(String[] args){
         Generics gnrc = new Generics();
-        Generics.Box<String> box = gnrc.new Box<String>();
+        Generics.Box<Float> box = gnrc.new Box<Float>();
         Generics.Box<Integer> box2 = gnrc.new Box<Integer>();
 
         System.out.println(box.getClass().equals(box2.getClass()));

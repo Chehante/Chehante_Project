@@ -2,12 +2,13 @@ package HomeWork;
 
 import java.util.Iterator;
 
-public class LinkedList implements List, Queue, Stack {
+public class LinkedList <T> implements List, Queue, Stack {
 
     public Item lastItem;
     public Item head;
 
-    public void add(Object object) {
+
+    public void add(T object) {
 
         Item newItem = new Item(object);
 
@@ -22,19 +23,19 @@ public class LinkedList implements List, Queue, Stack {
 
     }
 
-    public Object get(int index){
-        Item foundItem = head;
+    public T get(int index){
+        Item <T> foundItem = head;
         for (int i = 0; i < index; i++){
             foundItem = foundItem.nextItem;
         }
         return foundItem.object;
     }
 
-    public Object remove(int index) {
+    public T remove(int index) {
 
         if (index == 0) {
             if (head != null) {
-            Object ob = head.object;
+            T ob = (T)head.object;
             head = head.nextItem;
             return ob;}
             else
@@ -54,18 +55,18 @@ public class LinkedList implements List, Queue, Stack {
             }
             else {
                 System.out.println("Индекс за пределами связанного списка");
-                return -1;
+                return null;
             }
         }
         previousItem.nextItem = nextItem.nextItem;
         if (previousItem.nextItem == null)
             lastItem = previousItem;
-        return ob;
+        return (T)ob;
 
     }
 
     public static void main(String[] args){
-        LinkedList intl = new LinkedList();
+        LinkedList <String> intl = new LinkedList<>();
 
         intl.add(new Integer(3));
         intl.add(new Integer(4));

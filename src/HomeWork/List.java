@@ -1,11 +1,11 @@
 package HomeWork;
 
-public interface List extends Iterable{
-    public void add(Object object);
+public interface List <T> extends Iterable{
+    public void add(T object);
 
-    public Object get(int Index);
+    public T get(int Index);
 
-    public Object remove(int Index);
+    public T remove(int Index);
 
     public int size();
 

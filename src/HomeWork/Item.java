@@ -1,11 +1,11 @@
 package HomeWork;
 
-public class Item {
+public class Item <T> {
 
-    Object object;
+    T object;
     Item nextItem;
 
-    public Item(Object a){
+    public Item(T a){
         object = a;
     }
 }

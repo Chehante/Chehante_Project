@@ -1,7 +1,5 @@
 package HomeWork;
 
-import java.util.Random;
-
 public enum Planets {
     Mercury(1000, 5, 500),
     Venus(2000, 2, 600),

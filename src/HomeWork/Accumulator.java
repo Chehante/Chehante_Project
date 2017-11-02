@@ -6,8 +6,8 @@ import java.util.Random;
 
 public class Accumulator {
 
-    int value;
-    Operation oper;
+    private int value;
+    private Operation oper;
 
     //constructor
     public Accumulator(int x) {
@@ -16,10 +16,7 @@ public class Accumulator {
 
     public static void main(String[] args) {
 
-        int x = 0;
-        Random rndm = new Random();
-
-        Accumulator acc = new Accumulator(0);
+        Accumulator acc  = new Accumulator(0);
 
         Operation opPlus = new Operation() {
             @Override
@@ -70,11 +67,11 @@ public class Accumulator {
         System.out.println("Current value is 20, divide on 2 and get: " + acc.getValue());
     }
 
-    public void accumulate(int a){
+    private void accumulate(int a){
         value = oper.doOperation(value, a);
     }
 
-    public int getValue(){
+    private int getValue(){
         return value;
     }
 
