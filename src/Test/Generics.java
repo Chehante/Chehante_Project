@@ -25,6 +25,9 @@ public class Generics {
         System.out.println(box.getClass().equals(box2.getClass()));
         System.out.println(box.getClass());
         System.out.println(box2.getClass());
+
+        int a =  new Integer(190);
+        int b =  new Integer(190);
     }
 
 }
