@@ -1,9 +1,9 @@
 package HomeWork;
 
-public interface Queue {
+public interface Queue <T> {
 
-    public void add(Object object);
+    public void add(T object);
 
-    public Object poll();
+    public <T> T poll();
 
 }

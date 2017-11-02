@@ -1,14 +1,14 @@
 package HomeWork;
 
+import java.util.Arrays;
 import java.util.Iterator;
 
-public class LinkedList <T> implements List, Queue, Stack {
+public class LinkedList <T> implements List<T>, Queue<T>, Stack<T> {
 
-    public Item lastItem;
-    public Item head;
+    Item lastItem;
+    Item head;
 
-
-    public void add(T object) {
+    public void add(Object object) {
 
         Item newItem = new Item(object);
 
@@ -23,8 +23,8 @@ public class LinkedList <T> implements List, Queue, Stack {
 
     }
 
-    public T get(int index){
-        Item <T> foundItem = head;
+    public Object get(int index){
+        Item foundItem = head;
         for (int i = 0; i < index; i++){
             foundItem = foundItem.nextItem;
         }
@@ -66,18 +66,11 @@ public class LinkedList <T> implements List, Queue, Stack {
     }
 
     public static void main(String[] args){
-        LinkedList <String> intl = new LinkedList<>();
+        List <String> intl = new LinkedList<>();
 
-        intl.add(new Integer(3));
-        intl.add(new Integer(4));
-        intl.add(new Integer(8));
-        intl.add(new Integer(1));
-        intl.add(new Integer(5));
-        intl.add(new Integer(6));
-        intl.add(new Integer(6));
-        intl.add(new Integer(6));
-
-        intl.printList();
+        intl.add("Опа");
+        intl.add("гагнам");
+        intl.add("стайл");
 
         Iterator itr = intl.iterator();
         //пробегаем с помощью итератора по ArrayList

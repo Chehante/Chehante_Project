@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.Random;
 
-public class ArrayList implements List, Queue, Stack {
+public class ArrayList <T> implements List<T>, Queue<T>, Stack<T> {
 
     public static int arrayCapacity = 10;
     public Object[] arrayObjects;
@@ -49,15 +49,13 @@ public class ArrayList implements List, Queue, Stack {
 
     public static void main(String[] args){
         Random rndm = new Random();
-        ArrayList arrList = new ArrayList(new Object[arrayCapacity]);
+        List <Integer> arrList = new ArrayList(new Object[arrayCapacity]);
         //создаем объект вложенного класса итератор
         Iterator itr = arrList.iterator();
 
         for (int i = 0; i < 6; i++) {
             arrList.add(rndm.nextInt(10));
         }
-
-        System.out.println(Arrays.toString(arrList.arrayObjects));
 
         //пробегаем с помощью итератора по ArrayList
         while (itr.hasNext()) {

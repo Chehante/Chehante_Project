@@ -1,9 +1,9 @@
 package HomeWork;
 
-public interface Stack{
+public interface Stack<T>{
 
-    public void push(Object object);
+    public void push(T object);
 
-    public Object pop();
+    public <T> T pop();
 
 }
