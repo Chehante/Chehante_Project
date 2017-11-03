@@ -8,6 +8,7 @@ public class LinkedList <T> implements List<T>, Queue<T>, Stack<T> {
     Item lastItem;
     Item head;
 
+    @Override
     public void add(Object object) {
 
         Item newItem = new Item(object);
@@ -121,6 +122,8 @@ public class LinkedList <T> implements List<T>, Queue<T>, Stack<T> {
 
     @Override
     public Iterator iterator() {
+        int a = 0;
+
         return new IteratorInner(head);
     }
 
